@@ -103,10 +103,10 @@ export function BoardList() {
   /*클릭 시 조회수 증가 처리 추가*/
   const handleRowClick = async (number) => {
     console.log(`${number}번 게시물 이동`);
+
     try {
-      await axios.post("/board/view/${number}");
-      fetchBoardList();
-      navigate("/board/view/${number}");
+      navigate(`/board/view/${number}`);
+      await axios.post(`/api/board/list/${number}`);
       console.log(`${number}번 게시물 클릭으로 조회수 증가`);
     } catch (error) {
       console.error("조회수를 증가시키는 데 실패했습니다.");

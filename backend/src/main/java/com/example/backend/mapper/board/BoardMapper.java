@@ -82,7 +82,7 @@ public interface BoardMapper {
     @Update("""
             UPDATE board
             SET board_view_count = board_view_count + 1
-            WHERE board_number = #{board_number}
+            WHERE board_number = #{number}
             """)
     void updateViewCount(@Param("number") Integer number);
 
