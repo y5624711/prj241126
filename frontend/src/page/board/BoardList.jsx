@@ -14,7 +14,7 @@ import {
   Table,
   Text,
 } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { LuSearch, LuTerminal } from "react-icons/lu";
@@ -29,6 +29,7 @@ import {
   PaginationRoot,
 } from "../../components/ui/pagination.jsx";
 import Slider from "react-slick";
+import { AuthenticationContext } from "../../context/AuthenticationProvider.jsx";
 
 export function BoardList() {
   // 게시판 데이터 상태
@@ -52,6 +53,7 @@ export function BoardList() {
   const [count, setCount] = useState(0);
 
   const navigate = useNavigate();
+  const authentication = useContext(AuthenticationContext);
 
   useEffect(() => {
     fetchBoardList();
@@ -114,7 +116,11 @@ export function BoardList() {
   };
 
   const handleWriteClick = () => {
-    navigate("/board/add");
+    if (authentication.isAuthenticated) {
+      navigate("/board/add"); // 로그인 상태에서 이동
+    } else {
+      window.alert("로그인이 필요합니다. 로그인 후 게시글 작성이 가능합니다."); // 경고창 표시
+    }
   };
 
   function MultipleItems() {
