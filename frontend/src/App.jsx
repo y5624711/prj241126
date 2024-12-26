@@ -21,8 +21,6 @@ import { MemberEdit } from "./page/member/MemberEdit.jsx";
 import { BoardWritten } from "./page/board/BoardWritten.jsx";
 import { AddressProvider, useAddress } from "./context/AddressContext.jsx";
 import { BoardEdit } from "./page/board/BoardEdit.jsx";
-import KakaoSignup from "./page/kakao/KakaoSignup.jsx";
-import { KaKaoLogin } from "./page/kakao/KaKaoLogin.jsx";
 import { BoardQuestion } from "./page/board/BoardQuestion.jsx";
 import { BoardQuestionAdd } from "./page/board/BoardQuestionAdd.jsx";
 import { BoardQuestionView } from "./page/board/BoardQuestionView.jsx";
@@ -75,10 +73,6 @@ const router = createBrowserRouter([
         element: <MemberLogin />,
       },
       {
-        path: "kakao/auth",
-        element: <KaKaoLogin />,
-      },
-      {
         path: "/manager/List",
         element: <ManagementPage />,
       },
@@ -109,10 +103,6 @@ const router = createBrowserRouter([
       {
         path: "board/edit/:number",
         element: <BoardEdit />,
-      },
-      {
-        path: "member/kakao/signup",
-        element: <KakaoSignup />,
       },
       {
         path: "board/question",
